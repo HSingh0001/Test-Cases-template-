@@ -1,0 +1,10 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Checkbox>	Leave unticked	–	"You must accept the terms"	Stays on page	Mandatory	P1	e.g. Terms & conditions
+<Checkbox>	Leave unticked	–	No error	Next page loads	Optional	P1	e.g. Send me updates
+<Checkbox>	Check	–	Unticked by default (or as specified)	–	Default	P2	Consent boxes must not be pre-ticked
+<Checkbox>	Tick then untick	–	Ends unticked; mandatory error returns	Stays on page	Toggle	P2	
+<Checkbox>	Click label	–	Checkbox toggles	–	Label click	P3	
+<Checkbox>	Space	–	Checkbox toggles	–	Keyboard	P2	
+<Checkbox>	Tick	–	Dependent field(s) appear	–	Conditional	P1	Only if it drives logic
+<Checkbox>	Tick + submit	–	Saved as true/Yes in back-end	Next page loads	Stored value	P2	
+<Checkbox>	Tick	–	No error	Next page loads	Valid	P1	

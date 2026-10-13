@@ -1,0 +1,11 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Field>	Enter	<script>alert('XSS')</script>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	Run on every free-text field
+<Field>	Enter	"><img src=x onerror=alert(1)>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	
+<Field>	Enter	javascript:alert(1)	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P2	Esp. URL/website fields
+<Field>	Enter	<b>bold</b><h1>Big</h1>	Shown as text, not formatted	Stays on page or Next page loads	HTML injection	P2	
+<Field>	Enter	' OR '1'='1' --	Rejected or stored as text; no database error	Stays on page or Next page loads	SQL injection	P1	
+<Field>	Enter	'; DROP TABLE users; --	Rejected or stored as text; no database error	Stays on page or Next page loads	SQL injection	P2	
+<Field>	Enter	=1+1	Shows as text "=1+1" in exports	Stays on page or Next page loads	Formula injection	P2	
+<Field>	Enter	=HYPERLINK("http://test.com","Click")	Shows as text in exports	Stays on page or Next page loads	Formula injection	P3	
+<Field>	Enter	../../etc/passwd	Rejected or stored as text	Stays on page or Next page loads	Path traversal	P3	
+<Field>	Paste	10,000 characters	Blocked at max length; no crash or slow page	Stays on page	Very long input	P3	

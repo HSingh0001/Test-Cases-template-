@@ -1,0 +1,11 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+Comments	Leave empty		No error	Next page loads	Optional	P1	Or mandatory error if required
+Comments	Enter	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Accepted; counter shows 0 remaining	–	Max length	P1	Assumes max 500
+Comments	Enter	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Blocked or "Maximum 500 characters"	Stays on page	Max length + 1	P1	
+Comments	Enter	Line 1 <Enter> Line 2	Line breaks kept on Review and in back-end	–	Line breaks	P2	
+Comments	Enter	Hello	Counter updates (e.g. 495 remaining)	–	Character counter	P3	Only if counter shown
+Comments	Enter	<script>alert('XSS')</script>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	On Review page and back-end, value displays as text, never runs
+Comments	Enter	"><img src=x onerror=alert(1)>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	
+Comments	Enter	' OR '1'='1' --	Rejected or stored as text; no database error shown	Stays on page or Next page loads	SQL injection	P1	
+Comments	Enter	=1+1	Stored as text; shows as =1+1 (not 2) in exports	Stays on page or Next page loads	Formula injection	P2	Check any Excel/CSV export of submissions
+Comments	Enter	Test comment	No error	Next page loads	Valid	P1	

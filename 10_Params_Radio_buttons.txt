@@ -1,0 +1,12 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Radio group>	Leave unselected	–	"Select an option"	Stays on page	Mandatory	P1	
+<Radio group>	Leave unselected	–	No error	Next page loads	Optional	P1	Use for optional groups
+<Radio group>	Check	–	No option pre-selected (or as specified)	–	Default	P2	
+<Radio group>	Select	<Option 1> then <Option 2>	Only Option 2 selected	–	Single select	P1	
+<Radio group>	Select	<Option 1>	Accepted	–	Each option	P1	Add one row per option
+<Radio group>	Select	<Option 2>	Accepted	–	Each option	P1	
+<Radio group>	Click label	<Option 1>	Option selected	–	Label click	P3	
+<Radio group>	Select	<Trigger option>	Dependent field(s) appear	–	Conditional	P1	Only if it drives logic
+<Radio group>	Select	<Other option>	Dependent field(s) hidden and cleared	–	Conditional reset	P1	
+<Radio group>	Arrow keys	–	Selection moves between options	–	Keyboard	P2	
+<Radio group>	Select + submit	<Option 2>	Correct value saved in back-end	Next page loads	Stored value	P2	

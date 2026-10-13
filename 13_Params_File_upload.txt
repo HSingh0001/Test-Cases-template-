@@ -1,0 +1,14 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Upload>	Leave empty	–	"Upload a file"	Stays on page	Mandatory	P1	
+<Upload>	Upload	test.pdf (1 MB)	Uploaded; file name shown; remove option	–	Valid type	P1	
+<Upload>	Upload	photo.jpg (1 MB)	Uploaded	–	Valid type	P1	One row per allowed type
+<Upload>	Upload	test.exe	"File type not allowed"	Stays on page	Invalid type	P1	
+<Upload>	Upload	virus.exe renamed to test.pdf	Rejected (content checked, not just extension)	Stays on page	Renamed type	P2	
+<Upload>	Upload	File exactly at max (e.g. 10 MB)	Accepted	–	Max size	P1	Assumes 10 MB
+<Upload>	Upload	File over max (e.g. 10.1 MB)	"File must be 10 MB or smaller"	Stays on page	Max size + 1	P1	
+<Upload>	Upload	empty.pdf (0 KB)	Rejected	Stays on page	Empty file	P2	
+<Upload>	Upload	Max files + 1	Error or upload blocked	Stays on page	Max count	P2	Only if multiple files
+<Upload>	Upload	<script>alert(1)</script>.pdf	Name shown as text; no script runs	–	File name	P2	
+<Upload>	Upload	File with 200-char name	Accepted or clear error; no crash	–	Long file name	P3	
+<Upload>	Upload then remove	test.pdf	File removed; mandatory error if required	Stays on page	Remove	P2	
+<Upload>	Upload + submit	test.pdf	File stored and opens in back-end	Next page loads	Stored	P1	

@@ -1,0 +1,16 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+First name	Leave empty		"First name is required"	Stays on page	Mandatory	P1	
+First name	Enter	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Accepted	–	Max length	P1	Assumes max 50
+First name	Enter	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Blocked or "Maximum 50 characters"	Stays on page	Max length + 1	P1	
+First name	Enter	John123	"Letters only"	Stays on page	Numbers	P1	
+First name	Enter	John@#!	"Letters only"	Stays on page	Not allowed chars	P2	
+First name	Enter	Mary-Jane	Accepted	–	Allowed specials	P1	Hyphen
+First name	Enter	O'Connor	Accepted	–	Allowed specials	P1	Apostrophe – common bug
+First name	Enter	Anne Marie	Accepted	–	Allowed specials	P2	Space
+First name	Enter	Zoë	Accepted	–	Accented	P2	
+First name	Enter	   	"First name is required"	Stays on page	Spaces only	P2	
+First name	Enter	<script>alert('XSS')</script>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	On Review page and back-end, value displays as text, never runs
+First name	Enter	"><img src=x onerror=alert(1)>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	
+First name	Enter	' OR '1'='1' --	Rejected or stored as text; no database error shown	Stays on page or Next page loads	SQL injection	P1	
+First name	Enter	=1+1	Stored as text; shows as =1+1 (not 2) in exports	Stays on page or Next page loads	Formula injection	P2	Check any Excel/CSV export of submissions
+First name	Enter	John	No error	Next page loads	Valid	P1	

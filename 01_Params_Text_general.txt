@@ -1,0 +1,16 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Field>	Leave empty		"<Field> is required"	Stays on page	Mandatory	P1	Delete this row if the field is optional
+<Field>	Leave empty		No error	Next page loads	Optional	P1	Use instead of the row above for optional fields
+<Field>	Enter	     	Treated as empty: "<Field> is required"	Stays on page	Spaces only	P2	
+<Field>	Enter	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Accepted (at max length)	–	Max length	P1	Assumes max 50 – adjust to the rule
+<Field>	Enter	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Cannot type the 51st character, or error "Maximum 50 characters"	Stays on page	Max length + 1	P1	
+<Field>	Enter	A	Error "Minimum 2 characters"	Stays on page	Min length - 1	P2	Only if a minimum applies
+<Field>	Enter	Test@#$%^&*	Error "Contains invalid characters"	Stays on page	Not allowed chars	P2	Only if special chars are not allowed
+<Field>	Enter	  John  	Accepted; saved trimmed as "John"	–	Leading/trailing spaces	P3	
+<Field>	Enter	José Ñoño 😀	Accepted or clear error per rules; no garbled text	–	Unicode / emoji	P3	
+<Field>	Paste	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA	Pasted text limited to max or error shown	Stays on page	Paste	P3	
+<Field>	Enter	<script>alert('XSS')</script>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	On Review page and back-end, value displays as text, never runs
+<Field>	Enter	"><img src=x onerror=alert(1)>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	
+<Field>	Enter	' OR '1'='1' --	Rejected or stored as text; no database error shown	Stays on page or Next page loads	SQL injection	P1	
+<Field>	Enter	=1+1	Stored as text; shows as =1+1 (not 2) in exports	Stays on page or Next page loads	Formula injection	P2	Check any Excel/CSV export of submissions
+<Field>	Enter	Test value	No error	Next page loads	Valid	P1	

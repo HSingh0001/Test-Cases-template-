@@ -1,0 +1,17 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+Email	Leave empty		"Email is required"	Stays on page	Mandatory	P1	
+Email	Enter	abc	"Enter a valid email address"	Stays on page	Invalid format	P1	No @
+Email	Enter	abc@	"Enter a valid email address"	Stays on page	Invalid format	P1	No domain
+Email	Enter	abc@test	"Enter a valid email address"	Stays on page	Invalid format	P2	No .com etc.
+Email	Enter	@test.com	"Enter a valid email address"	Stays on page	Invalid format	P2	No name
+Email	Enter	abc@@test.com	"Enter a valid email address"	Stays on page	Invalid format	P2	
+Email	Enter	abc test@test.com	"Enter a valid email address"	Stays on page	Invalid format	P2	Space inside
+Email	Enter	first.last+tag@test.co.uk	Accepted	–	Valid variant	P2	Dots, plus sign, sub-domain
+Email	Enter	JOHN@TEST.COM	Accepted	–	Upper case	P3	
+Email	Enter	aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@test.com	Blocked or max length error	Stays on page	Max length + 1	P3	254 is the usual max
+Email	Enter	other@test.com	"Emails do not match"	Stays on page	Confirm email mismatch	P1	Only if there is a confirm email field
+Email	Enter	<script>alert('XSS')</script>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	On Review page and back-end, value displays as text, never runs
+Email	Enter	"><img src=x onerror=alert(1)>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	
+Email	Enter	' OR '1'='1' --	Rejected or stored as text; no database error shown	Stays on page or Next page loads	SQL injection	P1	
+Email	Enter	=1+1	Stored as text; shows as =1+1 (not 2) in exports	Stays on page or Next page loads	Formula injection	P2	Check any Excel/CSV export of submissions
+Email	Enter	john.smith@test.com	No error	Next page loads	Valid	P1	

@@ -1,0 +1,17 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+Date of birth	Leave empty		"Date of birth is required"	Stays on page	Mandatory	P1	
+Date of birth	Enter	31/02/2000	"Enter a valid date"	Stays on page	Invalid date	P1	
+Date of birth	Enter	00/01/2000	"Enter a valid date"	Stays on page	Invalid date	P2	
+Date of birth	Enter	15/13/2000	"Enter a valid date"	Stays on page	Invalid date	P2	Month 13
+Date of birth	Enter	29/02/2000	Accepted	–	Leap year	P2	Valid leap day
+Date of birth	Enter	29/02/2001	"Enter a valid date"	Stays on page	Leap year	P2	Not a leap year
+Date of birth	Enter	2000-01-15	Accepted and converted, or format error	Stays on page	Wrong format	P2	Expected DD/MM/YYYY
+Date of birth	Enter	abc	"Enter a valid date"	Stays on page	Letters	P2	
+Date of birth	Enter	<Tomorrow>	"Date must be in the past"	Stays on page	Future date	P1	
+Date of birth	Enter	<Today>	Accepted or error per rules	–	Today	P2	Boundary
+Date of birth	Enter	<Today minus 18 yrs + 1 day>	"You must be 18 or older"	Stays on page	Min age - 1 day	P1	Only if age rule applies
+Date of birth	Enter	<Today minus 18 yrs>	Accepted	–	Min age exact	P1	
+Date of birth	Enter	01/01/1880	"Enter a valid date of birth"	Stays on page	Too old	P3	
+Start/End date	Enter	End date before start date	"End date must be after start date"	Stays on page	Cross-field	P1	Only if date range
+Date of birth	Select	Date from calendar picker	Field filled in correct format	–	Date picker	P2	
+Date of birth	Enter	15/06/1990	No error	Next page loads	Valid	P1	

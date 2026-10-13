@@ -1,0 +1,8 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+Postcode	Leave empty		"Postcode is required"	Stays on page	Mandatory	P1	
+Postcode	Enter	200	"Enter a 4-digit postcode"	Stays on page	Too short	P1	AU 4 digits
+Postcode	Enter	20000	Blocked or "Enter a 4-digit postcode"	Stays on page	Too long	P1	
+Postcode	Enter	20AB	"Numbers only"	Stays on page	Letters	P1	
+Postcode	Enter	0800	Accepted; saved as 0800 (not 800)	–	Leading zero	P1	NT postcode – common bug
+Postcode	Enter	3000 with State = NSW	Error if postcode/state cross-check exists	Stays on page	State mismatch	P2	
+Postcode	Enter	2000	No error	Next page loads	Valid	P1	

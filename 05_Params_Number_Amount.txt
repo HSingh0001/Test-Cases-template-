@@ -1,0 +1,15 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+Amount	Leave empty		"Amount is required"	Stays on page	Mandatory	P1	
+Amount	Enter	abc	Not accepted or "Enter a number"	Stays on page	Letters	P1	
+Amount	Enter	1	Accepted	–	Min	P1	Assumes range 1–10000
+Amount	Enter	0	"Must be at least 1"	Stays on page	Min - 1	P1	
+Amount	Enter	10000	Accepted	–	Max	P1	
+Amount	Enter	10001	"Must be 10,000 or less"	Stays on page	Max + 1	P1	
+Amount	Enter	-5	Rejected	Stays on page	Negative	P1	
+Amount	Enter	10.555	Rounded to 10.56 or error per rules	–	Decimals	P2	
+Amount	Enter	10.50	Accepted	–	Decimals allowed	P2	
+Amount	Enter	1,000	Accepted or error per rules	–	Formatted	P2	
+Amount	Enter	$100	Accepted or error per rules	–	Currency symbol	P3	
+Amount	Enter	1e5	Rejected	Stays on page	Exponent	P3	Number inputs often allow e
+Amount	Enter	99999999999999999999	Rejected; no crash	Stays on page	Very large	P3	
+Amount	Enter	250	No error	Next page loads	Valid	P1	

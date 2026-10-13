@@ -1,0 +1,8 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Group>	Leave all unticked	–	"Select at least one option"	Stays on page	Mandatory (min 1)	P1	
+<Group>	Tick	<Option 1>	Accepted	Next page loads	Single	P1	
+<Group>	Tick	<Option 1>, <Option 2>	Accepted	Next page loads	Multiple	P1	
+<Group>	Tick	All options	Accepted, or max error if limit applies	–	All	P2	
+<Group>	Tick	4 options (max 3)	"Select up to 3 options" or 4th disabled	Stays on page	Max limit	P1	Only if max applies
+<Group>	Tick	"None of the above" + <Option 1>	Other options cleared or error	Stays on page	Exclusive option	P2	Only if 'None' option exists
+<Group>	Tick + submit	<Option 1>, <Option 2>	All selected values saved	Next page loads	Stored value	P2	

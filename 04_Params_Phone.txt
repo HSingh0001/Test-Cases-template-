@@ -1,0 +1,12 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+Mobile	Leave empty		"Mobile is required"	Stays on page	Mandatory	P1	
+Mobile	Enter	04ab123456	"Numbers only" or letters not accepted	Stays on page	Letters	P1	
+Mobile	Enter	041234567	"Enter a 10-digit number"	Stays on page	Too short	P1	Assumes AU 10 digits
+Mobile	Enter	04123456789	Blocked or "Enter a 10-digit number"	Stays on page	Too long	P1	
+Mobile	Enter	0912345678	"Enter a valid mobile number"	Stays on page	Wrong prefix	P2	Only if prefix is validated
+Mobile	Enter	0412-345-678	Accepted and normalised, or clear error per rules	–	Special chars	P2	
+Mobile	Enter	0412 345 678	Accepted and saved as 0412345678	–	With spaces	P2	
+Mobile	Enter	+61412345678	Accepted or error per rules	–	International	P2	
+Mobile	Enter	<script>alert('XSS')</script>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	On Review page and back-end, value displays as text, never runs
+Mobile	Enter	"><img src=x onerror=alert(1)>	Shown as plain text or rejected; no pop-up, no code runs, no error page	Stays on page or Next page loads	Script injection	P1	
+Mobile	Enter	0412345678	No error	Next page loads	Valid	P1	

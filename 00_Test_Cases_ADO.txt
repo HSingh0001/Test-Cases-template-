@@ -1,0 +1,58 @@
+ID	Work Item Type	Title	Test Step	Step Action	Step Expected	Priority	State	Tags
+	Test Case	[FORM] - E2E - Complete and submit all pages with valid data	1	Open [FORM] at @FormURL	Page 1 loads; title, progress indicator and all fields display correctly	1	Design	Forms; Happy Path
+			2	Enter valid data in all fields on Page 1 and click Next	No validation errors; Page 2 loads; progress indicator updates			
+			3	Repeat for each remaining page up to the Review page	Each page accepts valid data and moves to the next page			
+			4	On the Review page, check every value entered	All values match what was entered, on the correct page/section			
+			5	Click Submit	Confirmation page shows a reference number; no errors			
+			6	Check the record in the back-end / admin system / database	Record exists with all values stored correctly; status is Submitted			
+			7	Check the confirmation email (if applicable) at @Email	Email received with correct reference number and details			
+	Test Case	[FORM] - Validation - Required fields on each page	1	Open [FORM] and leave all required fields on [PAGE] empty, click Next	Cannot proceed; each required field shows an error message	1	Design	Forms; Validation
+			2	Check the error messages	Messages are clear, next to the field, and an error summary is shown at top			
+			3	Fill one required field at a time and click Next	Error clears only for the completed field			
+			4	Fill all required fields and click Next	Next page loads			
+			5	Repeat for every page of the form	Required-field rules work on all pages			
+	Test Case	[FORM] - Validation - Field formats (email, phone, date, postcode, number)	1	Enter invalid email @InvalidEmail and move to next field / click Next	Format error shown for email	2	Design	Forms; Validation
+			2	Enter invalid phone @InvalidPhone	Format error shown for phone			
+			3	Enter invalid date @InvalidDate (e.g. 31/02/2026, future DOB)	Date error shown			
+			4	Enter invalid postcode @InvalidPostcode	Postcode error shown			
+			5	Enter letters in a numeric field	Not accepted or error shown			
+			6	Correct all values and click Next	Errors clear; next page loads			
+	Test Case	[FORM] - Validation - Field length and boundary values	1	Enter text at the maximum allowed length in [FIELD]	Value accepted	2	Design	Forms; Validation
+			2	Enter text at max length + 1	Input is blocked or error shown			
+			3	Enter numeric values at min, max, min-1 and max+1	Min/max accepted; outside range rejected with error			
+			4	Enter special characters and leading/trailing spaces	Handled as per requirements (trimmed/accepted/rejected); no crash			
+	Test Case	[FORM] - Navigation - Next and Back keep entered data	1	Complete Page 1 and Page 2 of [FORM]	Page 3 loads	1	Design	Forms; Navigation
+			2	Click Back to Page 2	Page 2 shows previously entered data			
+			3	Click Back to Page 1	Page 1 shows previously entered data			
+			4	Change a value on Page 1, click Next to Page 3	Changed value kept; Page 2 data still present			
+	Test Case	[FORM] - Navigation - Cannot skip pages using URL or progress bar	1	On Page 1, try to open the URL of a later page directly	User is redirected to the first incomplete page	2	Design	Forms; Navigation
+			2	Click a later step in the progress bar before completing earlier pages	Not allowed, or user is taken to the first incomplete page			
+	Test Case	[FORM] - Navigation - Browser Back, Refresh and new tab	1	Fill Page 2 partly and press browser Refresh	Data kept or a warning shown, as per requirements	2	Design	Forms; Navigation
+			2	Press the browser Back button	User goes to previous form page; no data loss or error page			
+			3	Open the form in a second tab and continue	No data conflict or corruption			
+	Test Case	[FORM] - Conditional logic - Show/hide fields and pages	1	Select option @ConditionValue in [TRIGGER FIELD]	Dependent fields/pages appear	1	Design	Forms; Logic
+			2	Fill the dependent fields	Fields validate correctly			
+			3	Change [TRIGGER FIELD] to a value that hides them	Dependent fields/pages hidden; hidden values not submitted			
+			4	Submit and check back-end record	Only relevant values stored			
+	Test Case	[FORM] - Review page - Edit links return to correct page	1	Complete all pages and reach the Review page	Summary of all answers displayed	2	Design	Forms; Review
+			2	Click Edit/Change for a section on [PAGE]	Correct page opens with data populated			
+			3	Change a value and continue	User returns to the Review page with updated value			
+	Test Case	[FORM] - Save and resume later (draft)	1	Fill Page 1 and 2, click Save / Save for later	Confirmation of save shown (and email/link if applicable)	2	Design	Forms; Save Draft
+			2	Close browser, reopen form via link or login	Form resumes at the saved page with data kept			
+			3	Complete and submit	Submission succeeds; draft no longer shown as open			
+	Test Case	[FORM] - File upload	1	Upload a valid file type within size limit (@ValidFile)	File uploads; file name shown; can be removed	2	Design	Forms; Upload
+			2	Upload an invalid file type (e.g. .exe)	Rejected with clear error			
+			3	Upload a file larger than the limit	Rejected with clear error			
+			4	Submit and check back-end	Uploaded file stored and openable			
+	Test Case	[FORM] - Submit - Double click and resubmission	1	On the last page click Submit twice quickly	Only one record created; button disabled after first click	2	Design	Forms; Submission
+			2	After confirmation, press browser Back and try to submit again	Duplicate submission prevented			
+	Test Case	[FORM] - Session timeout	1	Fill part of the form and stay idle beyond the timeout (@TimeoutMinutes)	Timeout warning shown before expiry (if required)	3	Design	Forms; Session
+			2	Try to continue after timeout	User told the session expired; data handled per requirements; no error page			
+	Test Case	[FORM] - Cancel / exit the form	1	Fill some pages and click Cancel/Exit	Confirmation prompt shown	3	Design	Forms; Navigation
+			2	Confirm cancel	User leaves the form; no record or draft created (as per requirements)			
+	Test Case	[FORM] - Accessibility - Keyboard and screen reader	1	Complete every page using only the keyboard (Tab, Shift+Tab, Enter, Space)	All fields and buttons reachable; focus is visible; logical tab order	2	Design	Forms; Accessibility
+			2	Trigger validation errors	Focus moves to error summary; errors announced by screen reader			
+			3	Check labels with a screen reader (NVDA/VoiceOver)	Every field has a meaningful label; required fields announced			
+			4	Zoom browser to 200%	Form usable; no content cut off			
+	Test Case	[FORM] - Compatibility - Browsers and mobile	1	Complete and submit the form on @Browser	Layout correct; form submits successfully	3	Design	Forms; Compatibility
+			2	Complete and submit on a mobile device / small screen	Responsive layout; correct keyboard type for email/phone/number fields			

@@ -1,0 +1,12 @@
+Field	Action	Value	Message	NextResult	Check type	Priority	Notes
+<Dropdown>	Leave default	Please select	"<Dropdown> is required"	Stays on page	Mandatory	P1	
+<Dropdown>	Leave default	Please select	No error	Next page loads	Optional	P1	Use for optional dropdowns
+<Dropdown>	Open	–	Options match requirements exactly (values, spelling, order)	–	Option list	P1	List expected options in Notes
+<Dropdown>	Check	–	Default is "Please select" (or as specified)	–	Default value	P2	
+<Dropdown>	Select	<Option 1>	Accepted	–	Each option	P1	Add one row per option
+<Dropdown>	Select	<Option 2>	Accepted	–	Each option	P1	
+<Dropdown>	Select	<Trigger option>	Dependent field(s) appear	–	Conditional	P1	Only if it drives logic
+<Dropdown>	Select	<Other option>	Dependent field(s) hidden and cleared	–	Conditional reset	P1	
+<Dropdown>	Type / arrow keys	First letter of option	Option selected via keyboard	–	Keyboard	P2	
+<Dropdown>	Select then Back + Next	<Option 2>	Selection kept	–	Back navigation	P2	
+<Dropdown>	Select + submit	<Option 2>	Correct code/value saved in back-end	Next page loads	Stored value	P2	e.g. 'PT' vs 'Part-time'
